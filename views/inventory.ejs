@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+<h1>Inventory</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Location</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% items.forEach(item => { %>
+            <tr>
+                <td><%= item.item_name %></td>
+                <td><%= item.location %></td>
+                <td><%= item.category_name %></td>
+                <td>
+                    <a href="/inventory/edit/<%= item.item_id %>">Edit</a>
+                    <form action="/inventory/delete/<%= item.item_id %>" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<%- include('partials/footer') %>

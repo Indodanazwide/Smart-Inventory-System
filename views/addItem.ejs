@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<h1>Add New Inventory Item</h1>
+<form action="/inventory" method="POST">
+    <label for="item_name">Item Name:</label>
+    <input type="text" id="item_name" name="item_name" required>
+
+    <label for="item_location">Location:</label>
+    <input type="text" id="item_location" name="item_location" required>
+
+    <label for="category_id">Category:</label>
+    <select id="category_id" name="category_id">
+        <% categories.forEach(category => { %>
+            <option value="<%= category.category_id %>"><%= category.category_name %></option>
+        <% }) %>
+    </select>
+
+    <button type="submit">Add Item</button>
+</form>
+
+<%- include('partials/footer') %>

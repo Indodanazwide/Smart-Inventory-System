@@ -1,0 +1,21 @@
+{
+  "name": "smart-inventory-system",
+  "version": "1.0.0",
+  "description": "A simple web application that allows users to manage inventory with CRUD operations. Unauthorized users cannot access the inventory page, and only authorized users can create, read, update, and delete items.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "mysql2": "^3.11.3",
+    "nodemon": "^3.1.7"
+  }
+}
