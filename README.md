@@ -1,7 +1,7 @@
 
 # Smart Inventory System
 
-A simple web application that allows users to manage inventory with CRUD operations. Unauthorized users cannot access the inventory page, and only authorized users can create, read, update, and delete items.
+A simple web application that allows users to manage inventory with CRUD operations.
 
 ## Table of Contents
 
@@ -16,7 +16,6 @@ A simple web application that allows users to manage inventory with CRUD operati
 
 ## Features
 
-- User authentication
 - Manage inventory items with Create, Read, Update, and Delete (CRUD) operations
 - Categorization of inventory items
 - User-friendly interface with responsive design
