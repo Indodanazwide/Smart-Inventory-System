@@ -1,111 +1,100 @@
 
 # Smart Inventory System
 
-A simple web application that allows users to manage inventory with CRUD operations.
+## Overview
 
-## Table of Contents
-
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Routes](#routes)
-- [Database Schema](#database-schema)
-- [Contributing](#contributing)
-- [License](#license)
+The Smart Inventory System is a web application built with Node.js, Express, EJS, and MySQL. It provides user authentication and a simple interface for managing an inventory of items, including adding, updating, and deleting items, as well as organizing them into categories.
 
 ## Features
 
-- Manage inventory items with Create, Read, Update, and Delete (CRUD) operations
-- Categorization of inventory items
-- User-friendly interface with responsive design
+- **User Authentication**: Sign up and sign in functionalities using bcrypt for password hashing.
+- **Inventory Management**: CRUD (Create, Read, Update, Delete) operations for managing inventory items.
+- **Categories**: Ability to categorize items for better organization.
+- **User-Friendly Interface**: EJS templates for rendering views.
 
 ## Technologies Used
 
-- Node.js
-- Express.js
-- MySQL
-- EJS (Embedded JavaScript templating)
-- CSS (for styling)
-- dotenv (for environment variable management)
-- nodemon (for development)
+- **Backend**: Node.js, Express
+- **Database**: MySQL
+- **Templating Engine**: EJS
+- **Session Management**: express-session
+- **Password Hashing**: bcrypt
+- **Environment Variables**: dotenv
 
-## Installation
+## Getting Started
 
-1. Clone the repository:
+### Prerequisites
+
+- Node.js (v14 or later)
+- MySQL Server
+- A package manager (npm or yarn)
+
+### Installation
+
+1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/Indodanazwide/smart-inventory-system.git
+   git clone https://github.com/Indodanazwide/Smart-Inventory-System.git
+   cd Smart-Inventory-System
    ```
 
-2. Navigate to the project directory:
-   ```bash
-   cd smart-inventory-system
-   ```
-
-3. Install the dependencies:
+2. **Install Dependencies**:
    ```bash
    npm install
    ```
 
-4. Create a `.env` file in the root directory and add your database configuration:
+3. **Set Up Environment Variables**:
+   Create a `.env` file in the root directory and add your database configuration:
    ```plaintext
    DB_HOST=your_database_host
-   DB_USER=your_database_user
+   DB_USER=your_database_username
    DB_PASSWORD=your_database_password
-   DB_NAME=your_database_name
+   DB_NAME=group_db
    PORT=3000
    ```
 
-## Usage
+4. **Set Up the Database**:
+   Execute the SQL scripts provided in the project to create the necessary database and tables.
 
-1. Start the server:
+5. **Run the Application**:
+   Start the server in development mode:
    ```bash
    npm run dev
    ```
 
-2. Open your browser and navigate to `http://localhost:3000` to view the application.
+6. **Access the Application**:
+   Open your browser and navigate to `http://localhost:3000`.
 
-## Routes
+## File Structure
 
-- **Home**: `GET /` - Displays the home page.
-- **Inventory**: `GET /inventory` - Displays all inventory items.
-- **Add Item**: `GET /inventory/new` - Displays form to add a new inventory item.
-- **Create Item**: `POST /inventory` - Adds a new inventory item.
-- **Edit Item**: `GET /inventory/edit/:id` - Displays form to edit an inventory item.
-- **Update Item**: `POST /inventory/edit/:id` - Updates an existing inventory item.
-- **Delete Item**: `POST /inventory/delete/:id` - Deletes an inventory item.
-
-## Database Schema
-
-### Tables
-
-- **Category**
-  - `category_id` (INT, AUTO_INCREMENT, PRIMARY KEY)
-  - `category_name` (VARCHAR(100), NOT NULL)
-
-- **Item**
-  - `item_id` (INT, AUTO_INCREMENT, PRIMARY KEY)
-  - `item_name` (VARCHAR(100), NOT NULL)
-
-- **Item_Location**
-  - `item_id` (INT, FOREIGN KEY references Item(item_id) ON DELETE CASCADE)
-  - `location` (VARCHAR(100), NOT NULL, PRIMARY KEY (item_id, location))
-
-- **Inventory**
-  - `item_id` (INT, FOREIGN KEY references Item(item_id) ON DELETE CASCADE)
-  - `category_id` (INT, FOREIGN KEY references Category(category_id) ON DELETE CASCADE, PRIMARY KEY (item_id, category_id))
+```
+smart-inventory/
+├── .env                # Environment variables
+├── database/           # Database connection and SQL scripts
+├── doc/                # Documentation files
+├── node_modules/       # Node.js modules
+├── package-lock.json   # Dependency lock file
+├── package.json        # Project metadata and dependencies
+├── routes/             # Express routes
+├── server/             # Server setup and configuration
+└── views/              # EJS templates
+```
 
 ## Contributing
 
-Contributions are welcome! If you have suggestions or improvements, feel free to create a pull request.
+Contributions are welcome! Please feel free to submit a pull request or open an issue.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the ISC License. See the [LICENSE](LICENSE) file for details.
 
+## Acknowledgments
 
-### Notes:
-- Replace the placeholders in the **Installation** section with your actual database connection details.
-- If you have specific guidelines for contributing, feel free to add them to the **Contributing** section.
-- You can also add sections for screenshots, acknowledgments, or any other relevant information as needed.
+- [Express](https://expressjs.com/) - Web framework for Node.js
+- [EJS](https://ejs.co/) - Templating engine
+- [MySQL](https://www.mysql.com/) - Database management system
+```
 
+### Notes
+- Make sure to customize the placeholders (like `your_database_host`, `your_database_username`, etc.) with your actual configurations.
+- If you have specific instructions or notes for using your application, feel free to add those to the `README.md` as well.
+- You can also include screenshots or examples in the documentation if you think it would be helpful.
