@@ -1,6 +1,89 @@
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #45a049;
+            color: white;
+            padding: 1rem 0;
+        }
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            color: black;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        a.button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a.button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
 
-<h1>Welcome to the Smart Inventory System</h1>
-<p>Manage your inventory efficiently using this application. You can view, add, edit, and delete items.</p>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/inventory">Inventory</a>
+            <a href="/inventory/new">Add Item</a>
+            <% if (user) { %>
+                <a href="/logout">Logout</a>
+            <% } else { %>
+                <a href="/signin">Sign In</a>
+                <a href="/signup">Sign Up</a>
+            <% } %>
+        </nav>
+    </header>
 
-<%- include('partials/footer') %>
+    <main>
+        <h1>Smart Inventory Management System</h1>
+        <h2>Welcome!</h2>
+        <p>Manage your inventory efficiently with real-time tracking, history logs, and location-based management.</p>
+        <% if (!user) { %>
+            <a href="/signin" class="button">Sign In</a>
+            <a href="/signup" class="button">Sign Up</a>
+        <% } %>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Inventory Management. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Inventory Item</title>
+    <title>Sign Up</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Poppins", sans-serif;
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #333;
+            background-color: #4CAF50;
             color: white;
             padding: 1em 0;
         }
         nav {
             text-align: center;
             margin-bottom: 20px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #4CAF50;
         }
         nav a {
             color: white;
@@ -26,7 +35,7 @@
             font-size: 18px;
         }
         nav a:hover {
-            text-decoration: underline;
+            color: black;
         }
         main {
             padding: 20px;
@@ -45,7 +54,7 @@
             margin-bottom: 10px;
             font-weight: bold;
         }
-        input, select {
+        input {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -64,7 +73,7 @@
             background-color: #45a049;
         }
         footer {
-            background-color: #333;
+            background-color: #4CAF50;
             color: white;
             text-align: center;
             padding: 1em 0;
@@ -77,7 +86,6 @@
 <body>
 
     <header>
-        <h1>Smart Inventory Management System</h1>
         <nav>
             <a href="/">Home</a>
             <a href="/inventory">Inventory</a>
@@ -92,23 +100,20 @@
     </header>
 
     <main>
-        <h1>Edit Inventory Item</h1>
-        <form action="/inventory/edit/<%= item.item_id %>" method="POST">
-            <label for="item_name">Item Name:</label>
-            <input type="text" id="item_name" name="item_name" value="<%= item.item_name %>" required>
+        <section>
+            <h2>Create Your Account</h2>
+            <form action="/signup" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
+        
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+        
+                <button type="submit">Sign Up</button>
+            </form>
 
-            <label for="item_location">Location:</label>
-            <input type="text" id="item_location" name="item_location" value="<%= item.location %>" required>
-
-            <label for="category_id">Category:</label>
-            <select id="category_id" name="category_id" required>
-                <% categories.forEach(category => { %>
-                    <option value="<%= category.category_id %>" <%= category.category_id === item.category_id ? 'selected' : '' %>><%= category.category_name %></option>
-                <% }) %>
-            </select>
-
-            <button type="submit">Update Item</button>
-        </form>
+            <p>Already have an account? <a href="/signin">Sign In</a></p>
+        </section>
     </main>
 
     <footer>
