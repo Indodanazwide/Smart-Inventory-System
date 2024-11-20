@@ -3,116 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Inventory Item</title>
-    <style>
-        body {
-            font-family: "Poppins", sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #45a049;
-            color: white;
-            padding: 1em 0;
-        }
-        nav {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
-        nav a:hover {
-            color: black;
-        }
-        main {
-            padding: 20px;
-            text-align: center;
-        }
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        footer {
-            background-color: #45a049;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <title>Smart Inventory System</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
 
     <header>
+
         <nav>
-            <a href="/">Home</a>
-            <a href="/inventory">Inventory</a>
-            <a href="/inventory/new">Add Item</a>
-            <% if (user) { %>
-                <a href="/logout">Logout</a>
-            <% } else { %>
-                <a href="/signin">Sign In</a>
-                <a href="/signup">Sign Up</a>
-            <% } %>
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="/">Smart Inventory</a>
+                </div>
+        
+                <div class="nav-menu">
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/inventory">Inventory</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+    
+                    <ul class="nav-auth">
+                        <% if (user) { %>
+                            <li><a href="/logout">Logout</a></li>
+                        <% } else { %>
+                            <li><a href="/login">Log In</a></li>
+                            <li><a href="/signup">Sign Up</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
         </nav>
+
     </header>
-
+    
     <main>
-        <h1>Add New Inventory Item</h1>
-        <form action="/inventory" method="POST">
-            <label for="item_name">Item Name:</label>
-            <input type="text" id="item_name" name="item_name" required>
 
-            <label for="item_location">Location:</label>
-            <input type="text" id="item_location" name="item_location" required>
+        <section class="add-item">
+            <h1>Add New Inventory Item</h1>
+        
+            <form action="/inventory" method="POST">
+                <label for="item_name">Item Name:</label>
+                <input type="text" id="item_name" name="item_name" required>
 
-            <label for="category_id">Category:</label>
-            <select id="category_id" name="category_id" required>
-                <% categories.forEach(category => { %>
-                    <option value="<%= category.category_id %>"><%= category.category_name %></option>
-                <% }) %>
-            </select>
+                <label for="item_location">Location:</label>
+                <input type="text" id="item_location" name="item_location" required>
 
-            <button type="submit">Add Item</button>
-        </form>
+                <label for="category_id">Category:</label>
+                <select id="category_id" name="category_id" required>
+                    <% categories.forEach(category => { %>
+                        <option value="<%= category.category_id %>"><%= category.category_name %></option>
+                    <% }) %>
+                </select>
+
+                <button type="submit">Add Item</button>
+            
+            </form>
+        </section>
+        
     </main>
 
     <footer>
-        <p>&copy; 2024 Smart Inventory Management. All rights reserved.</p>
+
+        <p>&copy; <%= new Date().getFullYear() %> Smart Inventory System. All rights reserved.</p>
+
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.createElement('div');
+            menuToggle.classList.add('menu-toggle');
+            menuToggle.innerHTML = `
+                <span></span>
+                <span></span>
+                <span></span>
+            `;
+
+            const nav = document.querySelector('nav');
+            const navUls = nav.querySelectorAll('ul');
+            
+            nav.insertBefore(menuToggle, nav.firstChild);
+
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('open');
+                navUls.forEach(ul => ul.classList.toggle('active'));
+            });
+        });
+    </script>
 
 </body>
 </html>

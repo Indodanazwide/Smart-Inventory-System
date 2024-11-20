@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Inventory System</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+
+    <header>
+
+        <nav>
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="/" id="logo">Smart Inventory</a>
+                </div>
+        
+                <div class="nav-menu">
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/inventory">Inventory</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+    
+                    <ul class="nav-auth">
+                        <% if (user) { %>
+                            <li><a href="/logout">Logout</a></li>
+                        <% } else { %>
+                            <li><a href="/login">Log In</a></li>
+                            <li><a href="/signup">Sign Up</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    
+    <main>
+
+        <section class="about">
+            <article class="hero">
+                <h1>About the Smart Inventory System</h1>
+                <h2>A simple, user-friendly inventory management system built to demonstrate web development skills.</h2>
+            </article>
+            
+            <article id="introduction">
+                <h3>Smart Inventory System</h3>
+                <p>
+                The Smart Inventory System is a web application designed to manage inventory items effectively.
+                Built using Node.js, Express, MySQL, and EJS, this system allows users to add, update, categorize,
+                and delete items, all while offering secure user authentication.
+                </p>
+                <p>This project showcases essential skills in web development, including backend technologies, user authentication, and database management.</p>
+            </article>
+            
+            <article id="features">
+                <h3>Key Features</h3>
+                <ul>
+                <li><strong>User Authentication:</strong> Secure login and registration using bcrypt for password hashing.</li>
+                <li><strong>Inventory Management:</strong> CRUD (Create, Read, Update, Delete) operations to manage items in the inventory.</li>
+                <li><strong>Categories:</strong> Organize inventory items into different categories for better management.</li>
+                <li><strong>User Interface:</strong> Simple and responsive interface built with EJS templates, ensuring a smooth user experience.</li>
+                </ul>
+            </article>
+            
+            <article id="technologies">
+                <h3>Technologies</h3>
+                <ul>
+                <li><strong>Backend:</strong> Built with <em>Node.js</em> and <em>Express</em>, providing a fast, efficient server for handling requests and managing data.</li>
+                <li><strong>Database:</strong> <em>MySQL</em> serves as the relational database to store inventory and user data securely.</li>
+                <li><strong>Templating Engine:</strong> <em>EJS</em> allows for dynamic rendering of views, making the interface interactive and responsive.</li>
+                <li><strong>Session Management:</strong> The system uses <em>express-session</em> to manage user sessions, ensuring secure access to features.</li>
+                <li><strong>Password Hashing:</strong> <em>bcrypt</em> is used to securely hash user passwords, safeguarding sensitive information.</li>
+                <li><strong>Environment Variables:</strong> <em>dotenv</em> is used for managing configuration settings such as database credentials and server port.</li>
+                </ul>
+            </article>
+            
+            <article id="how-it-works">
+                <h3>How It Works</h3>
+                <ol>
+                <li><strong>User Registration & Login:</strong> Users can sign up with their credentials, which are securely hashed. After registration, they can log in to access the system.</li>
+                <li><strong>Inventory Management:</strong> Once logged in, users can add new items to the inventory, update existing items, or delete them. Items are organized into categories for easy browsing.</li>
+                <li><strong>Session Management:</strong> Users remain logged in through session management, providing a seamless experience while navigating the app.</li>
+                </ol>
+            </article>
+            
+            <article class="footer">
+                <p>Thank you for visiting the Smart Inventory System project! Feel free to contribute or open an issue if you encounter any problems.</p>
+                <p>Check out the <a href="https://github.com/Indodanazwide/Smart-Inventory-System">GitHub repository</a> for more details.</p>
+            </article>
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>&copy; <%= new Date().getFullYear() %> Smart Inventory System. All rights reserved.</p>
+
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.createElement('div');
+            menuToggle.classList.add('menu-toggle');
+            menuToggle.innerHTML = `
+                <span></span>
+                <span></span>
+                <span></span>
+            `;
+
+            const nav = document.querySelector('nav');
+            const navUls = nav.querySelectorAll('ul');
+            
+            nav.insertBefore(menuToggle, nav.firstChild);
+
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('open');
+                navUls.forEach(ul => ul.classList.toggle('active'));
+            });
+        });
+    </script>
+
+</body>
+</html>

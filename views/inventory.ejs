@@ -3,140 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory</title>
-    <style>
-        body {
-            font-family: "Poppins", sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em 0;
-        }
-        nav {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
-        nav a:hover {
-            color: black;
-        }
-        main {
-            padding: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        a.button {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a.button:hover {
-            background-color: #45a049;
-        }
-
-        .delete-btn,
-        .edit-btn {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border: transparent;
-            border-radius: 5px;
-        }
-
-        .delete-btn:hover,
-        .edit-btn:hover {
-            background-color: #45a049;
-        }
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <title>Smart Inventory System</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
 
     <header>
+
         <nav>
-            <a href="/">Home</a>
-            <a href="/inventory">Inventory</a>
-            <a href="/inventory/new">Add Item</a>
-            <% if (user) { %>
-                <a href="/logout">Logout</a>
-            <% } else { %>
-                <a href="/signin">Sign In</a>
-                <a href="/signup">Sign Up</a>
-            <% } %>
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="/">Smart Inventory</a>
+                </div>
+        
+                <div class="nav-menu">
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/inventory">Inventory</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+    
+                    <ul class="nav-auth">
+                        <% if (user) { %>
+                            <li><a href="/logout">Logout</a></li>
+                        <% } else { %>
+                            <li><a href="/login">Log In</a></li>
+                            <li><a href="/signup">Sign Up</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
         </nav>
+
     </header>
-
+    
     <main>
-        <h2>Inventory</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Item Name</th>
-                    <th>Location</th>
-                    <th>Category</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% items.forEach(item => { %>
+
+        <section class="inventory">
+            <h2>Inventory</h2>
+            
+            <table>
+
+                <thead>
+
                     <tr>
-                        <td><%= item.item_name %></td>
-                        <td><%= item.location %></td>
-                        <td><%= item.category_name %></td>
-                        <td>
-                            <a href="/inventory/edit/<%= item.item_id %>"  class="edit-btn">Edit</a>
-
-                            <form action="/inventory/delete/<%= item.item_id %>" method="POST" style="display:inline;">
-                                <button class="delete-btn" type="submit">Delete</button>
-                            </form>
-                        </td>
+                        <th>Item Name</th>
+                        <th>Location</th>
+                        <th>Category</th>
+                        <th>Actions</th>
                     </tr>
-                <% }) %>
-            </tbody>
-        </table>
 
-        <a href="/inventory/new" class="button">Add New Item</a>
+                </thead>
+
+                <tbody>
+
+                    <% items.forEach(item => { %>
+                        <tr>
+                            <td><%= item.item_name %></td>
+                            <td><%= item.location %></td>
+                            <td><%= item.category_name %></td>
+                            <td>
+                                <a href="/inventory/edit/<%= item.item_id %>"  class="edit-btn">Edit</a>
+
+                                <form action="/inventory/delete/<%= item.item_id %>" method="POST" style="display:inline;">
+                                    <button class="delete-btn" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+
+                </tbody>
+
+            </table>
+
+            <a href="/inventory/new" class="button">Add New Item</a>
+        </section>
+        
     </main>
 
     <footer>
-        <p>&copy; 2024 Smart Inventory Management. All rights reserved.</p>
+
+        <p>&copy; <%= new Date().getFullYear() %> Smart Inventory System. All rights reserved.</p>
+
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.createElement('div');
+            menuToggle.classList.add('menu-toggle');
+            menuToggle.innerHTML = `
+                <span></span>
+                <span></span>
+                <span></span>
+            `;
+
+            const nav = document.querySelector('nav');
+            const navUls = nav.querySelectorAll('ul');
+            
+            nav.insertBefore(menuToggle, nav.firstChild);
+
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('open');
+                navUls.forEach(ul => ul.classList.toggle('active'));
+            });
+        });
+    </script>
 
 </body>
 </html>

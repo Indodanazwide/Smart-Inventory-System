@@ -1,0 +1,534 @@
+:root {
+    /* Color Palette */
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --background-color: #ecf0f1;
+    --text-color: #333;
+    --white: #ffffff;
+
+    /* Spacing Variables */
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 2rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-medium);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Hamburger Menu Styles */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    top: var(--spacing-medium);
+    right: var(--spacing-medium);
+    z-index: 1000;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white);
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: var(--spacing-medium);
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: var(--spacing-small);
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+.logo a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: var(--spacing-small);
+}
+
+.logo a:hover {
+    color: var(--secondary-color);
+}
+
+p button {
+    background-color: var(--secondary-color);
+    border: none;
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+p button:hover {
+    background-color: var(--primary-color);
+}
+
+p a button {
+    color: var(--white);
+    text-decoration: none;
+}
+
+main {
+    flex: 1;
+    padding: var(--spacing-large);
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: var(--spacing-medium);
+    margin-top: auto;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Hamburger menu open state */
+    .menu-toggle.open span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    nav {
+        height: 5vh;
+    }
+
+    nav ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: var(--spacing-medium) 0;
+    }
+
+    nav ul li a {
+        font-size: 1.5rem;
+    }
+}
+
+/* Home Page Styles */
+.home {
+    text-align: center;
+    padding: var(--spacing-large);
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: var(--spacing-large) auto;
+}
+
+.home h2 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-medium);
+    font-size: 2.5rem;
+}
+
+.home p {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-large);
+    font-size: 1.2rem;
+}
+
+.home .button, .home .btn {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: var(--spacing-small) var(--spacing-medium);
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 0 var(--spacing-small);
+    transition: background-color 0.3s ease;
+}
+
+.home .button:hover, .home .btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* About Page Styles */
+.about {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-large);
+    background-color: var(--white);
+}
+
+.about .hero {
+    text-align: center;
+    margin-bottom: var(--spacing-large);
+    padding: var(--spacing-medium);
+    background-color: var(--background-color);
+    border-radius: 8px;
+}
+
+.about .hero h1 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-small);
+}
+
+.about .hero h2 {
+    color: var(--text-color);
+    font-weight: normal;
+}
+
+.about article {
+    margin-bottom: var(--spacing-large);
+}
+
+.about h3 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: var(--spacing-small);
+    margin-bottom: var(--spacing-medium);
+}
+
+.about #introduction p,
+.about #features ul,
+.about #technologies ul,
+.about #how-it-works ol {
+    margin-bottom: var(--spacing-medium);
+    line-height: 1.6;
+}
+
+.about #features ul,
+.about #technologies ul {
+    padding-left: var(--spacing-large);
+}
+
+.about #how-it-works ol {
+    padding-left: var(--spacing-large);
+}
+
+.about .footer {
+    text-align: center;
+    background-color: var(--background-color);
+    padding: var(--spacing-medium);
+    border-radius: 8px;
+}
+
+.about .footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.about .footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .home, .about {
+        padding: var(--spacing-medium);
+        margin: var(--spacing-medium);
+    }
+
+    .home h2 {
+        font-size: 2rem;
+    }
+
+    .home .button, .home .btn {
+        display: block;
+        margin: var(--spacing-small) 0;
+    }
+}
+
+/* Login and Signup Pages */
+.login, .signup {
+    max-width: 400px;
+    margin: var(--spacing-large) auto;
+    padding: var(--spacing-large);
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.login h2, .signup h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-large);
+}
+
+.login form, .signup form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login label, .signup label {
+    margin-bottom: var(--spacing-small);
+    color: var(--text-color);
+}
+
+.login input, .signup input {
+    padding: var(--spacing-small);
+    margin-bottom: var(--spacing-medium);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login button, .signup button {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login button:hover, .signup button:hover {
+    background-color: var(--primary-color);
+}
+
+.login p, .signup p {
+    text-align: center;
+    margin-top: var(--spacing-medium);
+}
+
+.login a, .signup a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.login a:hover, .signup a:hover {
+    text-decoration: underline;
+}
+
+/* Inventory Page */
+.inventory {
+    max-width: 1000px;
+    margin: var(--spacing-large) auto;
+    padding: var(--spacing-large);
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.inventory h2 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-large);
+    text-align: center;
+}
+
+.inventory table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--spacing-large);
+}
+
+.inventory thead {
+    background-color: var(--background-color);
+}
+
+.inventory th, .inventory td {
+    border: 1px solid #ddd;
+    padding: var(--spacing-small);
+    text-align: left;
+}
+
+.inventory th {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.inventory .edit-btn, .inventory .delete-btn {
+    display: inline-block;
+    padding: var(--spacing-small);
+    margin: 0 var(--spacing-small);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.inventory .edit-btn {
+    background-color: #28a745;
+    color: var(--white);
+}
+
+.inventory .delete-btn {
+    background-color: #dc3545;
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+}
+
+.inventory .edit-btn:hover, .inventory .delete-btn:hover {
+    opacity: 0.8;
+}
+
+.inventory .button {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: var(--spacing-small) var(--spacing-medium);
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.inventory .button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .login, .signup, .inventory {
+        width: 95%;
+        padding: var(--spacing-medium);
+    }
+
+    .inventory table {
+        font-size: 0.9rem;
+    }
+
+    .inventory .edit-btn, .inventory .delete-btn {
+        padding: var(--spacing-small);
+        margin: 0 var(--spacing-small) var(--spacing-small) 0;
+    }
+}
+
+/* Add and Edit Item Pages */
+.add-item, .edit-item {
+    max-width: 500px;
+    margin: var(--spacing-large) auto;
+    padding: var(--spacing-large);
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.add-item h1, .edit-item h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-large);
+}
+
+.add-item form, .edit-item form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-item label, .edit-item label {
+    margin-bottom: var(--spacing-small);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.add-item input, 
+.edit-item input,
+.add-item select, 
+.edit-item select {
+    padding: var(--spacing-small);
+    margin-bottom: var(--spacing-medium);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.add-item select,
+.edit-item select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 50%;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    margin-right: 2rem;
+    padding: 1rem;
+    padding-right: 2rem;
+}
+
+.add-item button, .edit-item button {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    margin-top: var(--spacing-small);
+}
+
+.add-item button:hover, .edit-item button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .add-item, .edit-item {
+        width: 95%;
+        padding: var(--spacing-medium);
+    }
+}

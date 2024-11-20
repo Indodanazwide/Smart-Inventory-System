@@ -3,87 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #45a049;
-            color: white;
-            padding: 1rem 0;
-        }
-        nav {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
-        nav a:hover {
-            color: black;
-        }
-        main {
-            padding: 20px;
-            text-align: center;
-        }
-        a.button {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a.button:hover {
-            background-color: #45a049;
-        }
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <title>Smart Inventory System</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
 
     <header>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/inventory">Inventory</a>
-            <a href="/inventory/new">Add Item</a>
-            <% if (user) { %>
-                <a href="/logout">Logout</a>
-            <% } else { %>
-                <a href="/signin">Sign In</a>
-                <a href="/signup">Sign Up</a>
-            <% } %>
-        </nav>
-    </header>
 
+        <nav>
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="/">Smart Inventory</a>
+                </div>
+        
+                <div class="nav-menu">
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/inventory">Inventory</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+    
+                    <ul class="nav-auth">
+                        <% if (user) { %>
+                            <li><a href="/logout">Logout</a></li>
+                        <% } else { %>
+                            <li><a href="/login">Log In</a></li>
+                            <li><a href="/signup">Sign Up</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    
     <main>
-        <h1>Smart Inventory Management System</h1>
-        <h2>Welcome!</h2>
-        <p>Manage your inventory efficiently with real-time tracking, history logs, and location-based management.</p>
-        <% if (!user) { %>
-            <a href="/signin" class="button">Sign In</a>
-            <a href="/signup" class="button">Sign Up</a>
-        <% } %>
+
+        <section class="home">
+            <h2>Welcome to the Smart Inventory System</h2>
+        
+            <p>Manage your inventory with ease.</p>
+
+            <p><a href="/about"><button>Learn more</button></a></p>
+        
+            <% if (!user) { %>
+                <a href="/login" class="button">Log In</a>
+                <a href="/signup" class="button">Sign Up</a>
+            <% } else if (user) { %>
+                <a href="/inventory" class="btn">Get Started</a>
+            <% } %>
+        </section>
+        
     </main>
 
     <footer>
-        <p>&copy; 2024 Smart Inventory Management. All rights reserved.</p>
+
+        <p>&copy; <%= new Date().getFullYear() %> Smart Inventory System. All rights reserved.</p>
+
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.createElement('div');
+            menuToggle.classList.add('menu-toggle');
+            menuToggle.innerHTML = `
+                <span></span>
+                <span></span>
+                <span></span>
+            `;
+
+            const nav = document.querySelector('nav');
+            const navUls = nav.querySelectorAll('ul');
+            
+            nav.insertBefore(menuToggle, nav.firstChild);
+
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('open');
+                navUls.forEach(ul => ul.classList.toggle('active'));
+            });
+        });
+    </script>
 
 </body>
 </html>
