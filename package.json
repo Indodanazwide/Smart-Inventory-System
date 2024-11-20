@@ -6,6 +6,7 @@
     "doc": "doc"
   },
   "scripts": {
+    "start": "node server/server.js",
     "dev": "nodemon server/server.js"
   },
   "type": "module",
@@ -21,5 +22,9 @@
     "express-session": "^1.18.1",
     "mysql2": "^3.11.4",
     "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
   }
 }
